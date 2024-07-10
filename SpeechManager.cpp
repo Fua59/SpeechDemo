@@ -39,14 +39,14 @@ void SpeechManager::startSpeech()
     printf("开始第<<1>>次比赛\n");
     system("pause");
 
+    Speaker sk;
     for(int j = 0; j < 12; j++)
     {
-        Speaker sk;
         sk.Init();
         v.push_back(sk);
     }
 
-    for(int i = 0; i < 2; i++)
+    for(int i = 0; i < 2; i++) // 分组并排序
     {
         printf("这是第%d组\n", i + 1);
         std::sort(v.begin()+ i * 6, v.begin() + 6 + i * 6);
@@ -64,7 +64,7 @@ void SpeechManager::startSpeech()
     std::sort(v.begin(), v.end());
     Print(0, 6);
 
-    std::ofstream file("data.csv", std::ios::app);
+    std::ofstream file("data.csv", std::ios::app); // 将结果写入文件
     if(!file.is_open())
         printf("打开文件失败\n");
     else
@@ -81,7 +81,7 @@ void SpeechManager::startSpeech()
     }
     system("pause");
 }
-void SpeechManager::printFile()
+void SpeechManager::printFile() // 读取文件
 {
     const char info[3][10] = {"冠军","亚军","季军"};
 
